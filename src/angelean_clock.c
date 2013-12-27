@@ -59,19 +59,6 @@ void get_ang_time(AngTm *at) {
 }
 
 /**
- * Integer exponentiation for b >= 0 and e >= 0
- */
-int powi(int b, int e) {
-  int result = 1;
-  int i;
-
-  for(i=e; i>0; i--) {
-    result *= b;
-  }
-  return result;
-}
-
-/**
  * Given the angelean time, write a formatted string to *str*
  * DDD
  * MMM
