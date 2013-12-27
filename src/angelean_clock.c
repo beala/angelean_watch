@@ -72,40 +72,6 @@ int powi(int b, int e) {
 }
 
 /**
- * Convert a positive integer to a string. If the string is less than *padding* chars long
- * then left pad with 0s. Does no bounds checking. Will end string with a null char.
- **/
-void itoa(int n, char *str, int padding) {
-  int n_buf = n;
-  int digits = 1;
-  int i, j, cur_digit;
-
-  // Count the number of digits.
-  while((n_buf /= 10) > 0) {
-    digits++;
-  }
-
-  // Left pad
-  j=0;
-  for(i = padding-digits; i>0; i--) {
-    str[j] = '0';
-    j++;
-  }
-
-  // Convert, starting with the leftmost digit.
-  n_buf = n;
-  for(i=digits-1; i>=0; i--) {
-    cur_digit = n_buf/powi(10, i);
-    str[j] = cur_digit + '0';
-    n_buf -= cur_digit * powi(10, i);
-    j++;
-  }  
-
-  // Terminate string
-  str[j] = '\0';
-}
-
-/**
  * Given the angelean time, write a formatted string to *str*
  * DDD
  * MMM
@@ -115,7 +81,6 @@ void format_ang_time(AngTm *at, char *str) {
   snprintf(str, 8, "%03d\n%03d", at->day, at->mday);
 }
 
-int counter = 0;
 /**
  * Write the current angelean time to the screen by updating
  * the layer and marking it as dirty.
